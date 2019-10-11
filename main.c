@@ -12,6 +12,6 @@ int main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-    ft_reader_tetri(fd);
+    ft_tetra_read(fd);
     return (0);
 }
