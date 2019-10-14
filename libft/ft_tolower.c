@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 23:36:39 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 17:17:41 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/07 16:06:06 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/07 16:09:33 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + ('a' - 'A'));
-	return (c);
+		return (c + 32);
+	else
+		return (c);
 }

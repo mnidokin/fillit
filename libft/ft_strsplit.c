@@ -3,77 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 15:29:14 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/08 23:07:27 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 15:47:45 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/16 15:11:49 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static int		ft_nbw(const char *str, char c)
+static int	ft_cntwrd(char const *s, char c)
 {
-	int word;
+	unsigned int	i;
+	int				w;
+	int				m;
 
-	word = 0;
-	if (*str != c && *str)
-	{
-		str++;
-		word++;
-	}
-	while (*str)
-	{
-		while (*str == c)
-		{
-			str++;
-			if (*str != c && *str)
-				word++;
-		}
-		str++;
-	}
-	return (word);
-}
-
-static int		ft_ln(const char *str, char c)
-{
-	int count;
-
-	count = 0;
-	while (*str != c && *str)
-	{
-		count++;
-		str++;
-	}
-	return (count);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	int		j;
-	int		i;
-	char	**spt;
-
-	j = 0;
+	w = 0;
 	i = 0;
-	if (!s || (!(spt = (char **)malloc(sizeof(char *) * (ft_nbw(s, c) + 1)))))
-		return (NULL);
-	while (*s)
+	while (s[i] != '\0')
 	{
-		while (*s == c && *s)
-			s++;
-		if (*s != c && *s)
+		m = 0;
+		while (s[i] != c)
 		{
-			if (!(spt[j] = (char *)malloc(sizeof(char) * (ft_ln(s, c) + 1))))
-				return (NULL);
-			while (*s && *s != c)
-				spt[j][i++] = (char)*s++;
-			spt[j][i] = '\0';
-			j++;
-			i = 0;
+			m = 1;
+			if (s[i] == '\0')
+				return (w + 1);
+			i++;
 		}
+		if (m == 1)
+			w++;
+		i++;
 	}
-	spt[j] = NULL;
-	return (spt);
+	return (w);
+}
+
+static int	ft_untilc(const char *s, char c)
+{
+	int		len;
+
+	len = 0;
+	while (*s != c && *s != '\0')
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	unsigned int	i;
+	unsigned int	f;
+	int				w;
+	char			**list;
+
+	if (s == NULL)
+		return (NULL);
+	if (!(list = (char**)malloc(sizeof(*list) * ft_cntwrd(s, c) + 1)))
+		return (NULL);
+	f = 0;
+	w = -1;
+	while (++w < ft_cntwrd(s, c))
+	{
+		i = 0;
+		while (s[i + f] == c)
+			f++;
+		i = ft_untilc(&s[f], c);
+		if (!(list[w] = ft_strnew(i)))
+			return (NULL);
+		if (i > 0)
+			list[w] = ft_strncpy(list[w], &s[f], i);
+		f = f + i;
+	}
+	list[w] = NULL;
+	return (list);
 }

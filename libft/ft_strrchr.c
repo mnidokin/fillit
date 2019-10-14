@@ -3,28 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:19:33 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/08 02:18:05 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/08 22:14:30 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/15 17:45:29 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *src, int c)
 {
-	char	*occ;
+	const char		*src1;
 
-	occ = NULL;
-	if (c == '\0')
-		return ((char*)s + ft_strlen(s));
-	while (*s)
+	src1 = src;
+	while (*src != '\0')
 	{
-		if (*s == (char)c)
-			occ = (char *)s;
-		s++;
+		src++;
 	}
-	return (occ);
+	while (src != src1)
+	{
+		if (*src == c)
+			return ((char*)src);
+		src--;
+	}
+	if (*src == c)
+		return ((char*)src);
+	return (NULL);
 }

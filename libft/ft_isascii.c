@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/11 21:28:07 by jechoque          #+#    #+#             */
-/*   Updated: 2017/08/11 21:33:54 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/04 23:07:39 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/15 17:01:26 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+int		ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
-	return (0);
+	else
+		return (0);
 }

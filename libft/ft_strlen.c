@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 18:48:23 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/08 13:28:49 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/07 13:28:53 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/07 13:30:34 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-size_t		ft_strlen(const char *s)
+int		ft_strlen(char const *s)
 {
-	size_t	len;
+	int		i;
 
-	len = 0;
-	while (*s++ && s)
-		len++;
-	return (len);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

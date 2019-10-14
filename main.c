@@ -2,16 +2,12 @@
 
 int main(int ac, char **av)
 {
-    int fd;
-    int len;
-    char buf[21 + 1];
+    char *str;
+    int **coord_tab;
+    int tetra_nb;
+    int min_map;
 
-    if (ac != 2)
-    {
-        printf("wrong number of input files\n");
-        return (0);
-    }
-    fd = open(av[1], O_RDONLY);
-    ft_tetra_read(fd);
+    tetra_nb = (ft_strlen((str = ft_reader_str(av[1]))) + 1) / 21;
+    coord_tab = ft_reader_coord_tab(str, tetra_nb, &min_map);
     return (0);
 }

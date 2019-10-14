@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/07/30 14:35:36 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 16:40:34 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 14:14:11 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/07 22:54:42 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
 #include "libft.h"
+#include <string.h>
+#include <stdlib.h>
 
 void	*ft_memalloc(size_t size)
 {
-	char	*tmp;
+	char	*s;
 
-	if (!(tmp = malloc(size)))
+	s = malloc(size);
+	if (s == NULL)
 		return (NULL);
-	ft_bzero(tmp, size);
-	return (tmp);
+	else
+		ft_bzero(s, size);
+	return (s);
 }

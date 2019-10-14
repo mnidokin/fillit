@@ -1,23 +1,19 @@
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "libft/libft.h"
+#ifndef FILLIT_H
+# define FILLIT_H
 
-#define BUFF_SIZE 21
+# include "libft/libft.h"
+# include <unistd.h>
+# include <string.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
-typedef struct		s_size
-{
-	int				i;
-	int				y;
-}					t_size;
+char *ft_reader_str(char *file);
+char *ft_reader_move(char *str);
+char *ft_aux_map(int size_m);
+int *ft_reader_coord(char *str, int *coord_line);
+int **ft_reader_coord_tab(char *str, int tetra_nb, int *min_map);
 
-typedef struct		s_tetra
-{
-	char			**mask;
-	char			let;
-	t_size			*size;
-}					t_tetra;
+# define BUFF_SIZE 550
 
-t_list *ft_tetra_read(int fd);
-int	ft_errors(char *line, int size);
+#endif

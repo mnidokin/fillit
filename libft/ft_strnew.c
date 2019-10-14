@@ -3,17 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 23:45:51 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 17:07:03 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 14:29:07 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/07 23:02:54 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strnew(size_t n)
 {
-	return ((char *)ft_memalloc(size + 1));
+	char	*s;
+
+	s = ft_memalloc(n + 1);
+	if (s == NULL)
+		return (NULL);
+	else
+		s[n + 1] = '\0';
+	return (s);
 }

@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/12 14:37:06 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 16:43:45 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/04 20:58:51 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/15 17:24:03 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <strings.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*str;
+	unsigned char	*b;
+	size_t			i;
 
-	str = (unsigned char *)s;
-	if (n)
-		while (n--)
-			*str++ = (unsigned char)c;
+	i = 0;
+	b = (unsigned char*)s;
+	while (i < n)
+	{
+		*b++ = (unsigned char)c;
+		i++;
+	}
 	return (s);
 }

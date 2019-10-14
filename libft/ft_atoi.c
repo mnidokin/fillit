@@ -3,32 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/01 00:11:40 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/08 22:39:40 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/07 16:35:59 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/07 17:01:55 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *s)
 {
-	int sign;
-	int rslt;
+	int		i;
+	int		isneg;
+	int		sum;
 
-	sign = 1;
-	rslt = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '+' || *str == '-')
+	sum = 0;
+	i = 0;
+	isneg = 1;
+	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n' || s[i] == '\v' || \
+			s[i] == '\r' || s[i] == '\f')
+		i++;
+	if (s[i] == '-')
+		isneg = -isneg;
+	if (s[i] == '-' || s[i] == '+')
+		i++;
+	while (s[i] != '\0' && s[i] >= '0' && s[i] <= '9')
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		sum = sum * 10;
+		sum = sum + (s[i] - '0');
+		i++;
 	}
-	while (ft_isdigit(*str))
-		rslt = (rslt * 10) + (*str++ - '0');
-	rslt *= sign;
-	return (rslt);
+	return (sum * isneg);
 }

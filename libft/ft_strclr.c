@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/05 16:36:52 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 16:49:59 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 14:35:29 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/15 17:30:40 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+
 void	ft_strclr(char *s)
 {
-	while (s && *s)
-		*s++ = '\0';
+	while (s != NULL && *s)
+	{
+		*s = '\0';
+		s++;
+	}
 }

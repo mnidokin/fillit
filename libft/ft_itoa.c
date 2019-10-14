@@ -3,52 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <jbchoquet@gmail.com>             +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/11 22:41:05 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/08 13:07:15 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 15:53:54 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/15 17:26:49 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <string.h>
 #include "libft.h"
 
-static int	ft_intlen(int nbr)
+static int	ft_itoa_length(int n)
 {
-	int len;
+	int		i;
+	int		neg;
 
-	len = 0;
-	len = (nbr <= 0 ? 1 : 0);
-	while (nbr != 0)
+	neg = 0;
+	i = 1;
+	if (n < 0)
 	{
-		nbr = nbr / 10;
-		len++;
+		n = -n;
+		neg = 1;
 	}
-	return (len);
+	while (n > 9)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i + neg + 1);
 }
 
 char		*ft_itoa(int n)
 {
-	unsigned int	nbr;
-	int				sign;
-	int				len;
-	char			*alpha;
+	char	*str;
+	int		length;
+	int		neg;
 
-	sign = (n < 0 ? 1 : 0);
-	alpha = NULL;
-	len = ft_intlen(n);
-	nbr = (n < 0 ? -n : n);
-	if (!(alpha = (char *)malloc(sizeof(char) * len + 1)))
+	neg = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	length = ft_itoa_length(n);
+	str = (char*)malloc(sizeof(*str) * (length));
+	if (str == NULL)
 		return (NULL);
-	alpha[len--] = '\0';
-	while (len >= 0)
+	str[--length] = '\0';
+	if (n < 0)
 	{
-		alpha[len] = nbr % 10 + '0';
-		nbr = nbr / 10;
-		len--;
+		n = -n;
+		neg = 1;
 	}
-	if (sign == 1)
-		alpha[0] = '-';
-	return (alpha);
+	while (length--)
+	{
+		str[length] = (n % 10) + '0';
+		n = n / 10;
+	}
+	if (neg)
+		str[0] = '-';
+	return (str);
 }

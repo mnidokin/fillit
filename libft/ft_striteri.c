@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jechoque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ewallner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 12:16:37 by jechoque          #+#    #+#             */
-/*   Updated: 2017/11/06 16:52:27 by jechoque         ###   ########.fr       */
+/*   Created: 2016/11/05 14:44:31 by ewallner          #+#    #+#             */
+/*   Updated: 2016/11/16 11:07:18 by ewallner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string.h>
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
 	i = 0;
-	if (s && f)
-		while (*s)
-			f(i++, s++);
+	if (s == NULL || f == NULL)
+		return ;
+	while (*s && s != NULL)
+	{
+		f(i++, s++);
+	}
 }
