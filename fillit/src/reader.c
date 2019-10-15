@@ -1,5 +1,8 @@
 #include "fillit.h"
 
+/*
+** Считываем файл по его названию, там же его записываем в строку и закрываем
+*/
 char *ft_reader_str(char *file)
 {
     char *buf;
@@ -26,6 +29,9 @@ char *ft_reader_str(char *file)
     return (res);
 }
 
+/*
+** Считываем координаты одного элемента
+*/
 int *ft_reader_coord(char *str, int *coord_line)
 {
     int i[2];
@@ -40,6 +46,9 @@ int *ft_reader_coord(char *str, int *coord_line)
     return (coord_line);
 }
 
+/*
+** Формируем двумерный массив координат  элементов относительно карты 4х4
+*/
 int **ft_reader_coord_tab(char *str, int tetra_nb, int *min_map)
 {
     int **coord_tab;
