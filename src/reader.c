@@ -23,6 +23,7 @@ char	*ft_reader(char *file)
 		return (NULL);
 	if (!(buf = (char *)ft_memalloc(sizeof(char) * (BUFF_SIZE + 1))))
 	{
+		free(buf);
 		close(fd);
 		return (NULL);
 	}

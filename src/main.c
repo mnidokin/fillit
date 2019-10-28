@@ -19,12 +19,7 @@ int	main(int ac, char **av)
 	int		i[3];
 
 	i[2] = 0;
-	if (ac != 2)
-	{
-		ft_putstr("error");
-		return (0);
-	}
-	if ((str = ft_reader(av[1])) == NULL || ft_errors(str) < 0)
+	if (ac != 2 || !(str = ft_reader(av[1])) || ft_errors(str) < 0)
 	{
 		write(1, "error\n", 6);
 		return (0);
@@ -32,7 +27,14 @@ int	main(int ac, char **av)
 	i[0] = (ft_strlen(str) + 1) / 21;
 	coord = ft_coord_tab(str, i[0], &i[1]);
 	coord = ft_coord_convert(i[1], i[0], coord);
+	free(str);
 	str = ft_map_gen(i[1]);
 	ft_solver(str, coord, 0, i[0]);
+	ft_putchar('\n');
+	i[2] = -1;
+	while (++i[2] < i[0])
+		free(coord[i[2]]);
+	free(coord);
+	free(str);
 	return (0);
 }

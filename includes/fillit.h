@@ -20,7 +20,6 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <string.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
@@ -49,7 +48,7 @@ char	*ft_map_gen(int size_m);
 
 int		**ft_coord_tab(char *str, int tetra_nb, int *min_map);
 int		**ft_coord_convert(int min_map, int tetra_nb, int **coord_tab);
-int		**ft_coord_exp(int min_map, int tetra_nb, int **coord_tab);
+int		**ft_exp(int min_map, int tetra_nb, int **coord_tab);
 
 /*
 ** coord_move.c

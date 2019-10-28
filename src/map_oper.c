@@ -18,9 +18,12 @@ int		ft_space(char *str, int **coord, int i, int shift)
 
 	j = -1;
 	while (++j < 4)
-		if (str[coord[i][j] + shift] != '.' ||
-				coord[i][j] + shift > (int)ft_strlen(str))
+	{
+		if (coord[i][j] + shift > (int)ft_strlen(str))
 			return (0);
+		else if (str[coord[i][j] + shift] != '.')
+			return (0);
+	}
 	return (1);
 }
 

@@ -37,6 +37,6 @@ int	ft_solver(char *str, int **coord, int i, int nb)
 			str = ft_clean(str, coord, i, j[0]);
 	}
 	if (i == 0)
-		ft_solver(ft_map_gen(j[2] + 1), ft_coord_exp(j[2], nb, coord), 0, nb);
+		ft_solver(ft_map_gen(j[2] + 1), ft_exp(j[2] + 1, nb, coord), 0, nb);
 	return (0);
 }

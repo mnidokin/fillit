@@ -79,7 +79,7 @@ int		**ft_coord_convert(int min_map, int tetra_nb, int **coord_tab)
 	return (coord_tab);
 }
 
-int		**ft_coord_exp(int min_map, int tetra_nb, int **coord_tab)
+int		**ft_exp(int min_map, int tetra_nb, int **coord_tab)
 {
 	int i[2];
 
